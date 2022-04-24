@@ -23,13 +23,12 @@ class TestHtml():
         # admin登录
         self.driver.find_element_by_xpath(
             '//*[@id="app"]/section/section/section/main/div/section/div/div[2]/div[2]/div/div/form/div[1]/div/div/input').send_keys(
-            "admin")
+            "18806292280")
         self.driver.find_element_by_xpath(
             '//*[@id="app"]/section/section/section/main/div/section/div/div[2]/div[2]/div/div/form/div[2]/div/div/input').send_keys("123456")
         #获取代码
 
         self.pic= self.driver.find_element_by_xpath('//*[@id="app"]/section/section/section/main/div/section/div/div[2]/div[2]/div/div/form/div[3]/div/div[2]/img')
-        print("qwe")
         # 获取验证码的src属性
         pic_url = self.pic.get_attribute('src')
         #保存验证码图片到指定路径
@@ -74,9 +73,8 @@ class TestHtml():
 
 
 
-if __name__ == '__main__':
-    test_html = TestHtml()
-    test_html.login()
+
+
 
 
 
