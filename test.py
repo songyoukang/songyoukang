@@ -6,27 +6,64 @@ from selenium.webdriver.support.select import Select
 #导入鼠标操作类
 from selenium.webdriver import ActionChains
 #导入pytest框架
+import pytest
+#用例跳过
+version=24
+#测试用例,setup 和teardown
+class Testdomo(object):
+    def setup(self):
+        #导入实例浏览器
+        self.driver=webdriver.Chrome()
+        #导入鼠标操作
+        action=ActionChains(self.driver)
+        #隐式等待
+        self.driver.implicitly_wait(10)
+        #获取URL
+        self.driver.get('http://www.baidu.com')
+        sleep(5)
+        #获取cookie,添加cookie
+        #cookie_value={'name':'BDUSS','value':'DNkNlBNMUdSSnp4OEhMV21VaTRsOTNqblN2WlRtfnhTSHVDbEhyb3pZcWUycEZpSVFBQUFBJCQAAAAAAAAAAAEAAACeuhJQu7XE0LqisMnT0QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ5NamKeTWpiR'}
+        #driver.add_cookie(cookie_value)
+        #cookie_value={'name':'token','value':'Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsImp0aSI6ImJiNmNlYzM0LWU0NWUtNGQ4Zi05OGM4LTU3MDgyODVkMGIwYiIsImlhdCI6MTY1MTEzNTQxNywiZXhwIjoxNjUxMjIxODE3LCJsb2dpbklkIjoiMzg4NjMyMjA3Nzg1MzA0MDY0IiwiZm9yY2VSZXNldFB3ZCI6ZmFsc2UsInJvbGVJZHMiOiIzOTQ1NDk0NDY2MTkyODc1NTIsMzk0NTQ5NDQ4NTAyNTMwMDQ4LDM5NDU0OTQ0ODA2NjMyMjQzMiIsIm9yZ0lkcyI6IjMyMDMwNTEwMjAwMSIsImxvZ2luQ2hhbm5lbCI6IndlYiIsInVzZXJJcCI6IjE3Mi4xNi4xMDAuMTcyIn0.wUHdrG0t2wKQtnxit06J9VUhefATP3hrf-SzPx5cLUU'}
+        #driver.add_cookie(cookie_value)
+    def test1(self):
+        self.driver.refresh()
+        sleep(5)
+        print("111111")
+        #最大窗口
+        self.driver.maximize_window()
+    @pytest.mark.run(order=1)
+    @pytest.mark.parametrize('name,age', [("宋友康", 25), ("郭晓红", 28)])
+    def test2(self, name, age):
+        print(f'我的名字是\n{name}{age}')
+        print("我的名字是\n{}{}".format(name, age))
+    def fun_med(self, num1, num2):
+        return num1 + num2
+        # class Testdomo1(object):
+    def test_fun(self):
+        result = self.fun_med(1, 2)
+        assert 3 == result
+    def teardown(self):
+        self.driver.quit()
+    #@pytest.mark.skipif(version!=25,reason="版本不正确，跳过")
+if __name__ == '__main__':
+    pytest.main(['-s', 'test.py'])
 
-#导入实例浏览器
-driver=webdriver.Chrome()
-#导入鼠标操作
-action=ActionChains(driver)
-#隐式等待
-driver.implicitly_wait(10)
-#获取URL
-driver.get('http://114.217.52.94:8081/operation')
-sleep(5)
-#获取cookie,添加cookie
-#cookie_value={'name':'BDUSS','value':'DNkNlBNMUdSSnp4OEhMV21VaTRsOTNqblN2WlRtfnhTSHVDbEhyb3pZcWUycEZpSVFBQUFBJCQAAAAAAAAAAAEAAACeuhJQu7XE0LqisMnT0QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ5NamKeTWpiR'}
-#driver.add_cookie(cookie_value)
-cookie_value={'name':'token','value':'Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsImp0aSI6ImJiNmNlYzM0LWU0NWUtNGQ4Zi05OGM4LTU3MDgyODVkMGIwYiIsImlhdCI6MTY1MTEzNTQxNywiZXhwIjoxNjUxMjIxODE3LCJsb2dpbklkIjoiMzg4NjMyMjA3Nzg1MzA0MDY0IiwiZm9yY2VSZXNldFB3ZCI6ZmFsc2UsInJvbGVJZHMiOiIzOTQ1NDk0NDY2MTkyODc1NTIsMzk0NTQ5NDQ4NTAyNTMwMDQ4LDM5NDU0OTQ0ODA2NjMyMjQzMiIsIm9yZ0lkcyI6IjMyMDMwNTEwMjAwMSIsImxvZ2luQ2hhbm5lbCI6IndlYiIsInVzZXJJcCI6IjE3Mi4xNi4xMDAuMTcyIn0.wUHdrG0t2wKQtnxit06J9VUhefATP3hrf-SzPx5cLUU'}
-driver.add_cookie(cookie_value)
 
-driver.refresh()
 
-sleep(10)
-#最大窗口
-driver.maximize_window()
+
+
+
+
+
+
+
+
+
+
+
+
+
 #截图保存，防止文件被覆盖,传入时间戳
 # now_time=strftime('%Y%m%d_%H%M%S')
 # driver.get_screenshot_as_file("./a_{}.png".format(now_time))
@@ -96,6 +133,6 @@ driver.maximize_window()
 # elements=driver.find_element_by_css_selector('h5')
 # element=elements.text
 # aa=(str(element))
-# print(aa)
+# print(aa)·
 # sleep(3)
-driver.quit()
+
