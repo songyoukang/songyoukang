@@ -47,18 +47,4 @@ from selenium.webdriver.support.select import Select
 #     driver=Until_driver()
 #     driver.get_driver()
 #     driver.close_driver()
-# result=0
-# i=0
-# while i<=100:
-#     if i==4:
-#         print("12312312312312312%d"%i)
-#         i += 1
-#         continue
-#     if i%2==0:
-#         result+=i
-#     if i==6:
-#         break
-#     print(i)
-#     i += 1
-# print("打印的值为%d"%result)
 
