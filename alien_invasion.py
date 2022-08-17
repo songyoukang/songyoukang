@@ -6,18 +6,13 @@ from pytesseract import image_to_string
 import urllib.request
 yuming=(random.randint(11,1000))
 from system import *
-
 a=0
 def test(a):
     while  a<5 :
-
         table_text = TestHtml()
         table_text.login()
-
         if table_text!="登录":
-
             a+=1
-
         else:
             # 执行登陆成功后的操作
             test.driver.find_element_by_xpath('//*[@id="app"]/div[2]/div/div[1]/div[1]/ul/li[2]/div').click()

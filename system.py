@@ -42,30 +42,38 @@ class TestHtml():
             '//*[@id="app"]/section/section/section/main/div/section/div/div[2]/div[2]/div/div/form/div[3]/div/div[1]/input').send_keys(pt)
         time.sleep(6)
         # 点击登录
-        self.driver.find_element_by_xpath("//span[contains(text(),'登录')]").click()
-        self.test=self.driver.find_element_by_xpath("//span[contains(text(),'登录')]").text
-        return (self.test)
+        #self.driver.find_element_by_xpath("//span[contains(text(),'登录')]").click()
+        #time.sleep(3)
+    def login1(self):
+        a = self.driver.find_element_by_xpath("//span[contains(text(),'登录')]").text
+        while len(a)!=1:
+            driver1.login()
+
         # 测试下登陆成功aa是不是False
             #self.a=self.driver.find_element_by_xpath("//span[contains(text(),'数字大屏')]").text
             # # 执行登陆成功后的操作
-            # self.driver.find_element_by_xpath('//*[@id="app"]/div[2]/div/div[1]/div[1]/ul/li[2]/div').click()
-            # self.driver.find_element_by_xpath("//span[contains(text(),'租户管理')]").click()
-            # self.driver.find_element_by_xpath('//*[@id="app"]/div[2]/div/div[1]/div[1]/ul/li[2]/ul/li[1]').click()
-            # time.sleep(6)
-            # self.driver.find_element_by_xpath('//*[@id="vue"]/div/div[2]/div/div/div[1]/div/button').click()
-            # self.driver.find_element_by_xpath(
-            #     '//*[@id="vue"]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div[2]/div/form/div[1]/div/div[1]/input').send_keys(
-            #     'git')
-            # self.driver.find_element_by_xpath("//span[contains(text(),'正式')]").click()
-            # self.driver.find_element_by_xpath(
-            #     '//*[@id="vue"]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div[2]/div/form/div[5]/div/div/input').send_keys(
-            #     '18206292280')
-            # self.driver.find_element_by_xpath(
-            #     '//*[@id="vue"]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div[2]/div/form/div[7]/div/div[1]/input').send_keys(
-            #     yuming)
-            # time.sleep(10)
+        #self.driver.find_element_by_xpath('//*[@id="app"]/div[2]/div/div[1]/div[1]/ul/li[2]/div').click()
+        self.driver.find_element_by_xpath("//span[contains(text(),'租户管理')]").click()
+        self.driver.find_element_by_xpath('//*[@id="app"]/div[2]/div/div[1]/div[1]/ul/li[2]/ul/li[1]').click()
+        time.sleep(6)
+        self.driver.find_element_by_xpath('//*[@id="vue"]/div/div[2]/div/div/div[1]/div/button').click()
+        self.driver.find_element_by_xpath(
+            '//*[@id="vue"]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div[2]/div/form/div[1]/div/div[1]/input').send_keys(
+            'git')
+        self.driver.find_element_by_xpath("//span[contains(text(),'正式')]").click()
+        self.driver.find_element_by_xpath(
+            '//*[@id="vue"]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div[2]/div/form/div[5]/div/div/input').send_keys(
+            '18206292280')
+        self.driver.find_element_by_xpath(
+            '//*[@id="vue"]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div[2]/div/form/div[7]/div/div[1]/input').send_keys(
+            yuming)
+        time.sleep(10)
 
 
+if __name__ == '__main__':
+    driver1=TestHtml()
+    driver1.login()
+    driver1.login1()
 
 
 

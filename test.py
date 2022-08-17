@@ -8,19 +8,24 @@ from selenium.webdriver import ActionChains
 #导入pytest框架
 import pytest
 #用例跳过
+from alien_invation.songyoukang.until import Until_driver
+
 version=24
 #测试用例,setup 和teardown
 class Testdomo(object):
     def setup(self):
-        #导入实例浏览器
-        self.driver=webdriver.Chrome()
-        #导入鼠标操作
-        action=ActionChains(self.driver)
-        #隐式等待
-        self.driver.implicitly_wait(10)
-        #获取URL
-        self.driver.get('http://www.baidu.com')
-        sleep(5)
+        #Until_driver().get_driver()
+        self.driver=Until_driver()
+        self.driver.get_driver()
+        # #导入实例浏览器
+        # self.driver=webdriver.Chrome()
+        # #导入鼠标操作
+        # action=ActionChains(self.driver)
+        # #隐式等待
+        # self.driver.implicitly_wait(10)
+        # #获取URL
+        # self.driver.get('http://www.baidu.com')
+        # sleep(5)
         #获取cookie,添加cookie
         #cookie_value={'name':'BDUSS','value':'DNkNlBNMUdSSnp4OEhMV21VaTRsOTNqblN2WlRtfnhTSHVDbEhyb3pZcWUycEZpSVFBQUFBJCQAAAAAAAAAAAEAAACeuhJQu7XE0LqisMnT0QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ5NamKeTWpiR'}
         #driver.add_cookie(cookie_value)
@@ -33,7 +38,7 @@ class Testdomo(object):
         #最大窗口
         self.driver.maximize_window()
     @pytest.mark.run(order=1)
-    @pytest.mark.parametrize('name,age', [("宋友康", 25), ("郭晓红", 28)])
+    @pytest.mark.parametrize('name,age', [("宋友康", 25), ("cs", 28)])
     def test2(self, name, age):
         print(f'我的名字是\n{name}{age}')
         print("我的名字是\n{}{}".format(name, age))
@@ -41,7 +46,7 @@ class Testdomo(object):
         return num1 + num2
         # class Testdomo1(object):
     def test_fun(self):
-        result = self.fun_med(1, 2)
+        result = Testdomo().fun_med(1, 2)
         assert 3 == result
     def teardown(self):
         self.driver.quit()
